@@ -29,13 +29,13 @@ class settings(object):
 		else:
 			with open (self.configpath+self.configfile, "r") as openfile:
 				configdata=openfile.read()
-		config=yaml.load(configdata)
+		config=yaml.load(configdata, Loader=yaml.FullLoader)
 		return config
 
 	def loadlang(self):
 		openfile = resource_stream(Requirement.parse("pet"), "translations/"+self.config["lang"]+".yml")
 		langdata=openfile.read()
-		return yaml.load(langdata)
+		return yaml.load(langdata, Loader=yaml.FullLoader)
 
 
 	def text(self,key):
